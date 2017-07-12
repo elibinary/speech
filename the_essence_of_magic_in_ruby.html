@@ -1,0 +1,271 @@
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    version: 1.4.4
+    site: https://github.com/ksky521/nodeppt
+    date: 
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>理解 Ruby 中的‘魔法’ - By Eli </title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.dark.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>The Essence Of Magic</h2>
+
+</hgroup><article>
+
+<p>在刚接触 ruby 的时候你可能会被它看似杂乱无章的庞大方法集以及大量的语法糖所淹没，当你深入后又会觉得它庞大且统一</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Questions</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>什么是闭包</li>
+<li>如何操纵词法作用域</li>
+<li>多变的方法定义过程的本质是什么</li>
+<li>metaclass 和 singleton class 的区别</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Closure</h2>
+
+</hgroup><article>
+
+<p>闭包就是引用了自由变量的函数</p>
+<pre><code>In languages where functions are first-class citizens, the language supports passing functions as arguments to other functions, returning them as the values from other functions, and assigning them to variables or storing them in data structures. -- from wiki
+</code></pre>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Features</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>可以作为结果赋值，可以被传递</li>
+<li>是环境和函数的组合</li>
+<li>惰性求值</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"   data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><div class="magic"><div class="magicItem current pagedown"  data-transition="cover-circle"><article>
+<div class="magic-wrapper">
+<hgroup>
+<h2>Block</h2>
+
+</hgroup><article>
+
+<p>block 是 ruby 中最常用且最强大的特性之一</p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem next pagedown"  data-transition="cover-circle"><article>
+<div class="magic-wrapper">
+<article>
+<h2>rb_block_t</h2>
+<img src="http://7xsger.com1.z0.glb.clouddn.com/image/jpg/rb_block_t.png" alt="rb_block_t">
+
+</article>
+</div>
+</article></div></div></section></slide>
+<slide class="slide"   data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><div class="magic"><div class="magicItem current pagedown"  data-transition="cover-circle"><article>
+<div class="magic-wrapper">
+<hgroup>
+<h2>Lambda</h2>
+
+</hgroup><article>
+
+<p>Ruby 允许把函数作为数据值保存在变量中，以及作为参数进行传递</p>
+<p>作用：把块转换为数据值</p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem next pagedown"  data-transition="cover-circle"><article>
+<div class="magic-wrapper">
+<article>
+<pre><code>def show_me
+    total_num = 256
+    lambda do |params|
+        puts &quot;now: #{total_num - params}&quot;
+    end
+end
+block_res = show_me
+block_res.call(128)
+</code></pre>
+</article>
+</div>
+</article></div></div></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Proc</h2>
+
+</hgroup><article>
+
+<p>lambda 和 proc 关键字使用时都会创建 proc 对象</p>
+<img src="http://7xsger.com1.z0.glb.clouddn.com/image/jpg/proc_obj.png" alt="proc_obj">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>词法作用域</h2>
+
+</hgroup><article>
+
+<p>词法作用域是指一段代码内的程序语法结构</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+
+<p>从词法作用域的角度来看 ruby 程序</p>
+<img src="http://7xsger.com1.z0.glb.clouddn.com/image/jpg/lexical_scope.png" alt="lexical_scope">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+
+<img src="http://7xsger.com1.z0.glb.clouddn.com/image/jpg/lexical_scope_case.png" alt="lexical_scope_case">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>常量查找</h2>
+
+</hgroup><article>
+
+<p>词法作用域链 ---&gt; 每个作用域类的 autoload ---&gt; 超类链 ---&gt; 超类的 autoload</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>常见方法定义方式</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>def method .. end</li>
+<li>def self.method .. end</li>
+<li>class &lt;&lt; self .. end</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>metaclass 和 singleton class</h2>
+<p>所有的 metaclass 都是 singleton class，但不是所有的 singleton class 都是 metaclass</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>eval</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>binding</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>instance_eval</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>define_method</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>END</h2>
+<h3>Thanks</h3>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodeppt v1.4.4</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+    var ASSET_RELATIVE_DIR = ".";
+</script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'move',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  config: ["TeX-AMS-MML_HTMLorMML.js"],
+  tex2jax: {inlineMath: [['\\(','\\)']]}});
+  //['$','$'], 避免货币价格冲突
+</script>
+<script type="text/javascript" src="./js/mathjax/MathJax.js"></script>
+
+<!--placeholder-->
+</body>
+</html>
