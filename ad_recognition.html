@@ -1,0 +1,385 @@
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    version: 1.4.4
+    site: https://github.com/ksky521/nodeppt
+    date: 
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>广告识别 - By Eli </title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.dark.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>关于广告过滤</h2>
+
+</hgroup><article>
+
+<ul>
+<li>这个攻众號我有关注，关注后填写皮夫测试卡，脸上问题都是在这里解决好的，还为我推荐了一些相关的减 肥 瘦 身的文章供我阅读，帮助了我很多。</li>
+<li>今天天气不错，提前顺利完成天气太热，出门跑步，提前喝点降暑的要不然生病了不过还是蛮佩服自己的感冒难受， 也完成了今天的跑量，加油</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>敏感字过滤</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>暴力匹配</h3>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>KMP</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>DFA 确定有限状态自动机</h3>
+
+</hgroup><article>
+
+<p>五元组</p>
+<ol>
+<li>有限状态集合 Q</li>
+<li>输入字母表 I</li>
+<li>状态转移函数 F</li>
+<li>开始状态 s</li>
+<li>接受状态集合 E</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>DFA</h3>
+
+</hgroup><article>
+
+<img src="https://i1.read01.com/uploads/535d292ce66b5a159d572606.jpg" class="no-screenfull">
+<p>DFA n-&gt;1 Digraph</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Trie Tree</h3>
+
+</hgroup><article>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Trie_example.svg/1200px-Trie_example.svg.png" class="no-screenfull">
+<p>O(n*m)</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Trie Tree</h3>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>词频统计</li>
+<li>字符串排序</li>
+<li>前缀匹配</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Trie Tree</h3>
+
+</hgroup><article>
+
+<p>实现</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>AC 自动机</h3>
+
+</hgroup><article>
+
+<p>多模式匹配算法</p>
+<p>用于在输入的一串字符串中匹配有限组“字典”中的子串</p>
+<p>六元组</p>
+<ol>
+<li>有限状态集合 Q</li>
+<li>输入字母表 I</li>
+<li>状态转移函数 Ft</li>
+<li>开始状态 s</li>
+<li>接受状态集合 E</li>
+<li>失效函数 Ff</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>AC 自动机</h3>
+
+</hgroup><article>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Ahocorasick.svg" class="no-screenfull">
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>Naive Bayes</h2>
+<p>以假设特征之间强独立下运用贝叶斯定理为基础的简单概率分类器</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>文本特征提取</h3>
+
+</hgroup><article>
+
+<p>目标：</p>
+<ol>
+<li>提取包含信息多的特征词</li>
+<li>剔除噪声词</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Mutual Information</h3>
+
+</hgroup><article>
+
+<p>两个随机变量间相互依赖性的度量</p>
+<p>概率公式：</p>
+<p>$$ I(X;Y) = \sum_{y\in Y}\sum_{x\in X} P(x,y)log\frac{P(x,y)}{P(x)P(y)} $$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Mutual Information</h3>
+
+</hgroup><article>
+
+<p>熵公式：</p>
+<p>$$ I(X;Y) = H(X) - H(X|Y) $$</p>
+<p>H(X) 就是 X 的熵，度量的是 X 的不确定性</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Mutual Information</h3>
+
+</hgroup><article>
+
+<p>应用</p>
+<p>度量目标词 X 与文本类别 Y 的互信息</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Mutual Information</h3>
+
+</hgroup><article>
+
+<p>$$ I(X;Y) = \sum_{y\in {1,0}}\sum_{x\in {1,0}} P(x,y)log\frac{P(x,y)}{P(x)P(y)} $$</p>
+<p>x=1： 文档包含目标特征
+x=0： 文档不包含目标特征
+y=1： 文档属于目标类别
+y=0： 文档不属于目标类别</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Mutual Information</h3>
+
+</hgroup><article>
+
+<p>MLE</p>
+<p>$$ I(X;Y) = \frac{N_{11}}{N}log\frac{NN_{11}}{N_{1.}N_{.1}} + \frac{N_{01}}{N}log\frac{NN_{01}}{N_{0.}N_{.1}} + \frac{N_{10}}{N}log\frac{NN_{10}}{N_{1.}N_{.0}} + \frac{N_{00}}{N}log\frac{NN_{00}}{N_{0.}N_{.0}} $$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>TF-IDF</h3>
+
+</hgroup><article>
+
+<p>用来评估一个词对于一个文本的重要程度</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>TF</h3>
+
+</hgroup><article>
+
+<p>全称 Term Frequency</p>
+<p>对于一个文本来说，一个词的词频就是指该词出现在该文本中的频率，
+用来表述其对于目标文本的内容描述能力</p>
+<p>$$ V(tf) = \frac{V(出现次数)}{V(总词汇数)} $$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>IDF</h3>
+
+</hgroup><article>
+
+<p>全称 Inverse Document Frequency, 逆向文本频率</p>
+<p>用于度量一个词的普遍重要性
+用来表述其对文本的区分能力</p>
+<p>$$ V(idf) = log\frac{V(文档总数)}{V(包含该词的文档数)} $$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>其他算法</h3>
+
+</hgroup><article>
+
+<ul>
+<li>二次信息熵</li>
+<li>信息增益方法</li>
+<li>x2统计法</li>
+<li>遗传算法</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>分类</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>朴素贝叶斯</h3>
+
+</hgroup><article>
+
+<p>$$ P(A|B) = \frac{P(B|A)P(A)}{P(B)} $$</p>
+<p>$$P(A|B)\quad -&gt;\quad P(B|A)$$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>Bayes</h3>
+
+</hgroup><article>
+
+<p>$$ A = (w_1, w_2, w_3, ... , w_n) $$</p>
+<p>$$ P(B|A) = P(B|w_1, w_2, ..., w_n) = \frac{P(w_1, w_2, ..., w_n|B)P(B)}{P(w_1, w_2, ... , w_n)} $$</p>
+<p>根据独立变量的联合分布</p>
+<p>$$ P(x, y) = P(x) * P(y) $$</p>
+<p>$$ 
+P(w<em>1, w_2, ... , w_n|B) = P(w_1|B)P(w_2|B)...P(w_n|B) = \prod\</em>{i=1}^nP(w_i|B)
+$$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>高斯模型</h3>
+
+</hgroup><article>
+
+<p>对于 $w_x$ 有 $$w_x ~ N(\mu, \sigma^2)$$</p>
+<p>$$ P(w_x|B)
+=
+\frac{1}{\sigma\sqrt{2\pi}} \, \exp \left( -\frac{(w_x- \mu)^2}{2\sigma^2} \right)$$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h3>多项式模型</h3>
+
+</hgroup><article>
+
+<p>$$ P(w_x|B) = \frac{N_{bx} + \alpha}{N_b + \alpha n}$$</p>
+<p>$P(w_x|B)$ 是对于特征 x 在一个样本中被类 B 拥有的概率</p>
+<p>$N_{bi}$ 是在训练集中，特征 x 在属于类 B 的样本中出现的次数
+$N_b$ 是类 B 中的所有特征数量和</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>随机森林</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h3>决策树</h3>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>SVM(支持向量机)</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>END</h1>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodeppt v1.4.4</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+    var ASSET_RELATIVE_DIR = ".";
+</script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'move',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  config: ["TeX-AMS-MML_HTMLorMML.js"],
+  tex2jax: {inlineMath: [['\\(','\\)']]}});
+  //['$','$'], 避免货币价格冲突
+</script>
+<script type="text/javascript" src="./js/mathjax/MathJax.js"></script>
+
+<!--placeholder-->
+</body>
+</html>
